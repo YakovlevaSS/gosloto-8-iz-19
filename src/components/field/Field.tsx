@@ -18,7 +18,7 @@ export const Field: React.FC<IProps> = ({
   );
 
   return (
-    <div>
+    <div className={ s.fieldBlog }>
       <div className={ s.titleFieldBlog }>
         <h2 className={ s.titleField }>{ isSecondField ? 'Поле 2' : 'Поле 1' }</h2>
         <p className={ s.textField }>
@@ -29,6 +29,7 @@ export const Field: React.FC<IProps> = ({
         { fieldNumbers.map((number) => (
           <button
             key={ number }
+            className={ s.number }
             disabled={ numbers.includes(number) }
             type="button"
             onClick={ () => onSelectNumber(number) }

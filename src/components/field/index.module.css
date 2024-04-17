@@ -1,0 +1,40 @@
+.fieldBlog {
+display: flex;
+flex-direction: column;
+gap: 8px;
+}
+
+.titleFieldBlog {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.titleField {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.textField {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.numberFieldBlog {
+
+}
+
+.number {
+width: 40px;
+height: 40px;
+box-sizing: border-box;
+border: 1px solid var(--Border);
+border-radius: 5px;
+background: rgb(255, 255, 255);
+}

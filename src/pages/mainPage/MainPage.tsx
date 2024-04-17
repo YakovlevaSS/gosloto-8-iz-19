@@ -31,25 +31,27 @@ export const MainPage = () => {
   };
 
   return (
-    <div className={ s.ticketWrup }>
-      <div className={ s.ticketTitle }>
-        <h1 className={ s.ticketTitle }>Билет 1</h1>
-        <button type="button" onClick={ () => generateRandomNumbers({ setNumbers: setSelectedNumbers }) }>
-          Сгенерировать случайные числа
+    <div className={ s.wrap }>
+      <div className={ s.ticketWrap }>
+        <div className={ s.ticketTitleBlog }>
+          <h1 className={ s.ticketTitle }>Билет 1</h1>
+          <button type="button" onClick={ () => generateRandomNumbers({ setNumbers: setSelectedNumbers }) }>
+            Сгенерировать числа
+          </button>
+        </div>
+        <Field
+          numbers={ selectedNumbers.numbers }
+          onSelectNumber={ (number: number) => onSelectNumber(number, false) }
+        />
+        <Field
+          isSecondField
+          numbers={ [selectedNumbers.numberSecond] }
+          onSelectNumber={ (number: number) => onSelectNumber(number, true) }
+        />
+        <button type="button">
+          Показать результаты
         </button>
       </div>
-      <Field
-        numbers={ selectedNumbers.numbers }
-        onSelectNumber={ (number: number) => onSelectNumber(number, false) }
-      />
-      <Field
-        isSecondField
-        numbers={ [selectedNumbers.numberSecond] }
-        onSelectNumber={ (number: number) => onSelectNumber(number, true) }
-      />
-      <button type="button">
-        Показать результаты
-      </button>
     </div>
   );
 };
