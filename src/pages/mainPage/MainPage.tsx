@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import Button from '../../components/UI/Button/Button';
 import { generateRandomNumbers } from '../../components/utils/generateRandomNumbers';
 import s from './index.module.css';
 import { checkLotteryResult } from '../../components/utils/checkResult';
+import { onSelectNumber } from '../../components/utils/onSelectNumber';
 
 
 interface IProps {
@@ -27,48 +28,12 @@ export const MainPage: React.FC<IProps> = ({ setIsWin }) => {
 
   const navigate = useNavigate();
 
-  const onSelectNumber = (number: number, isSecondField: boolean) => {
-    if (isSecondField) {
-      if (selectedNumbers.numberSecond === number) {
-        // Если номер уже выбран, удаляем его
-        setSelectedNumbers((prevNumbers) => ({
-          ...prevNumbers,
-          numberSecond: 0,
-        }));
-      } else if (!selectedNumbers?.numberSecond) {
-        // Иначе устанавливаем новый номер
-        setSelectedNumbers((prevNumbers) => ({
-          ...prevNumbers,
-          numberSecond: number,
-        }));
-      }
-    }
-    if (!isSecondField) {
-      if (selectedNumbers.numbers.includes(number)) {
-        // Если номер уже выбран, удаляем его
-        setSelectedNumbers((prevNumbers) => ({
-          ...prevNumbers,
-          numbers: prevNumbers.numbers.filter((num) => num !== number),
-        }));
-      } else if (selectedNumbers.numbers.length < 8) {
-        // Иначе добавляем новый номер, если количество выбранных чисел меньше 8
-        setSelectedNumbers((prevNumbers) => ({
-          ...prevNumbers,
-          numbers: [...prevNumbers.numbers, number],
-        }));
-      }
-    }
-  };
-
   const getResult = () => {
     generateRandomNumbers({ setNumbers: setWinningNumbers });
     setIsWin(checkLotteryResult(selectedNumbers, winningNumbers));
     navigate('/result');
   };
 
-  useEffect(() => {
-    console.log(selectedNumbers);
-  }, [selectedNumbers]);
 
   return (
     <div className={ s.wrap }>
@@ -85,12 +50,16 @@ export const MainPage: React.FC<IProps> = ({ setIsWin }) => {
         </div>
         <Field
           numbers={ selectedNumbers.numbers }
-          onSelectNumber={ (number: number) => onSelectNumber(number, false) }
+          onSelectNumber={ (number: number) => onSelectNumber({
+            selectedNumbers, setSelectedNumbers, number, isSecondField: false
+          }) }
         />
         <Field
           isSecondField
           numbers={ [selectedNumbers.numberSecond] }
-          onSelectNumber={ (number: number) => onSelectNumber(number, true) }
+          onSelectNumber={ (number: number) => onSelectNumber({
+            selectedNumbers, setSelectedNumbers, number, isSecondField: true
+          }) }
         />
         <div className={ s.buttonBlog }>
           <Button
