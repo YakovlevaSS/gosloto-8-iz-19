@@ -1,0 +1,45 @@
+.wrap {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.ticketWrap {
+    width: 312px;
+    height: 368px;
+    border-radius: 3px;
+    background: var(--White);
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 12px;
+    margin: auto;
+    justify-content: space-between;
+}
+
+.ticketTitle {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0px;
+    text-align: left;
+}
+
+.textBlog {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.buttonBlog {
+    display: flex;
+    justify-content: center;
+}
+
+.textResult {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 0px;
+    text-align: left;
+}

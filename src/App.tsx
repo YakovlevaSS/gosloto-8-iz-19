@@ -1,6 +1,6 @@
-import { MainPage } from './pages/mainPage/MainPage';
+import AppRoutes from './routes';
 
 
-const App = () => <MainPage />;
+const App = () => <AppRoutes />;
 
 export default App;

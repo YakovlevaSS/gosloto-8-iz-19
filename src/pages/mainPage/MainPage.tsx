@@ -1,13 +1,21 @@
 import { useEffect, useState } from 'react';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { useNavigate } from 'react-router-dom';
+
 import { Field } from '../../components/field/Field';
 import { INumber } from '../../components/Interface/number';
 import Button from '../../components/UI/Button/Button';
 import { generateRandomNumbers } from '../../components/utils/generateRandomNumbers';
 import s from './index.module.css';
+import { checkLotteryResult } from '../../components/utils/checkResult';
 
 
-export const MainPage = () => {
+interface IProps {
+  setIsWin: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export const MainPage: React.FC<IProps> = ({ setIsWin }) => {
   const [selectedNumbers, setSelectedNumbers] = useState<INumber>({
     numbers: [],
     numberSecond: 0,
@@ -16,6 +24,8 @@ export const MainPage = () => {
     numbers: [],
     numberSecond: 0,
   });
+
+  const navigate = useNavigate();
 
   const onSelectNumber = (number: number, isSecondField: boolean) => {
     if (isSecondField) {
@@ -50,9 +60,15 @@ export const MainPage = () => {
     }
   };
 
+  const getResult = () => {
+    generateRandomNumbers({ setNumbers: setWinningNumbers });
+    setIsWin(checkLotteryResult(selectedNumbers, winningNumbers));
+    navigate('/result');
+  };
+
   useEffect(() => {
-console.log(selectedNumbers)
-  }, [selectedNumbers])
+    console.log(selectedNumbers);
+  }, [selectedNumbers]);
 
   return (
     <div className={ s.wrap }>
@@ -60,9 +76,9 @@ console.log(selectedNumbers)
         <div className={ s.ticketTitleBlog }>
           <h1 className={ s.ticketTitle }>Билет 1</h1>
           <Button
+            isActive
             classes="buttonText"
             onClick={ () => (generateRandomNumbers({ setNumbers: setSelectedNumbers })) }
-            isActive
           >
             Сгенерировать числа
           </Button>
@@ -76,9 +92,10 @@ console.log(selectedNumbers)
           numbers={ [selectedNumbers.numberSecond] }
           onSelectNumber={ (number: number) => onSelectNumber(number, true) }
         />
-        <div className={s.buttonBlog}>
+        <div className={ s.buttonBlog }>
           <Button
             classes="buttonText"
+            onClick={ getResult }
           >Показать результаты
           </Button>
         </div>
