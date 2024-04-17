@@ -38,3 +38,7 @@ border: 1px solid var(--Border);
 border-radius: 5px;
 background: rgb(255, 255, 255);
 }
+
+.active {
+    background-color: var(--Primary);
+}

@@ -29,8 +29,7 @@ export const Field: React.FC<IProps> = ({
         { fieldNumbers.map((number) => (
           <button
             key={ number }
-            className={ s.number }
-            disabled={ numbers.includes(number) }
+            className={ `${s.number} ${numbers.includes(number) ? s.active : ''}` }
             type="button"
             onClick={ () => onSelectNumber(number) }
           >
