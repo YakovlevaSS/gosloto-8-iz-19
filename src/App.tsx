@@ -1,3 +1,5 @@
-const App = () => <div className="App">start</div>;
+import { MainPage } from "./pages/mainPage/MainPage";
+
+const App = () => <MainPage />
 
 export default App;
