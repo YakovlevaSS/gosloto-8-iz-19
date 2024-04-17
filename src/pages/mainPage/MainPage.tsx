@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Field } from '../../components/field/Field';
 import { INumber } from '../../components/Interface/number';
@@ -50,6 +50,10 @@ export const MainPage = () => {
     }
   };
 
+  useEffect(() => {
+console.log(selectedNumbers)
+  }, [selectedNumbers])
+
   return (
     <div className={ s.wrap }>
       <div className={ s.ticketWrap }>
@@ -57,7 +61,8 @@ export const MainPage = () => {
           <h1 className={ s.ticketTitle }>Билет 1</h1>
           <Button
             classes="buttonText"
-            onClick={ () => generateRandomNumbers({ setNumbers: setSelectedNumbers }) }
+            onClick={ () => (generateRandomNumbers({ setNumbers: setSelectedNumbers })) }
+            isActive
           >
             Сгенерировать числа
           </Button>
@@ -71,8 +76,11 @@ export const MainPage = () => {
           numbers={ [selectedNumbers.numberSecond] }
           onSelectNumber={ (number: number) => onSelectNumber(number, true) }
         />
-        <div>
-          <Button classes="buttonText">Показать результаты</Button>
+        <div className={s.buttonBlog}>
+          <Button
+            classes="buttonText"
+          >Показать результаты
+          </Button>
         </div>
       </div>
     </div>
