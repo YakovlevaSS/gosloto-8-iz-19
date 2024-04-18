@@ -10,7 +10,7 @@ const AppRoutes = () => {
   const [isWin, setIsWin] = useState<boolean>(false);
   return (
     <Routes>
-      <Route element={ <MainPage setIsWin={ setIsWin } /> } path="/" />
+      <Route element={ <MainPage isWin={ isWin } setIsWin={ setIsWin } /> } path="/" />
       <Route element={ <ResultPage isWin={ isWin } /> } path="/result" />
     </Routes>
   );
