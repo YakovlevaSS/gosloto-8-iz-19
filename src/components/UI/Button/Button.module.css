@@ -13,7 +13,7 @@
 }
 
 .buttonText:hover {
-    
+    border: 1px solid var(--TypographyMain);
 }
 
 .active {
@@ -22,4 +22,8 @@
 
 .disabled {
     opacity: 0,5;
+}
+
+.buttonText:active {
+    transform: translateY(1px); 
 }
