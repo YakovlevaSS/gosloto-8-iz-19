@@ -27,4 +27,4 @@
 
 
 ## Диплой пректа:
-
+https://master--superb-meerkat-51e807.netlify.app/
