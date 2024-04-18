@@ -1,7 +1,8 @@
-import { useState } from 'react';
+/* eslint-disable import/no-extraneous-dependencies */
 
-// eslint-disable-next-line import/no-extraneous-dependencies
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify'
 
 import { Field } from '../../components/field/Field';
 import { INumber } from '../../components/Interface/number';
@@ -10,7 +11,6 @@ import { generateRandomNumbers } from '../../components/utils/generateRandomNumb
 import s from './index.module.css';
 import { checkLotteryResult } from '../../components/utils/checkResult';
 import { onSelectNumber } from '../../components/utils/onSelectNumber';
-
 
 interface IProps {
   setIsWin: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,9 +29,13 @@ export const MainPage: React.FC<IProps> = ({ setIsWin }) => {
   const navigate = useNavigate();
 
   const getResult = () => {
-    generateRandomNumbers({ setNumbers: setWinningNumbers });
-    setIsWin(checkLotteryResult(selectedNumbers, winningNumbers));
-    navigate('/result');
+    if (selectedNumbers.numbers.length === 8 && selectedNumbers.numberSecond) {
+        generateRandomNumbers({ setNumbers: setWinningNumbers });
+        setIsWin(checkLotteryResult(selectedNumbers, winningNumbers));
+        navigate('/result');
+    } else {
+        toast.error('Вы не выбрали все необходимые номера', { className: s.errorTost })
+    }
   };
 
 

@@ -34,3 +34,7 @@ align-items: center;
     display: flex;
     justify-content: center;
 }
+
+.errorTost {
+    background: rgb(241, 156, 156);
+  }
