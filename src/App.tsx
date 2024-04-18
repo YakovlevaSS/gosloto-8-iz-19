@@ -1,8 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
-import AppRoutes from './routes';
-
-import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+
+import AppRoutes from './routes';
 
 
 const App = () => (

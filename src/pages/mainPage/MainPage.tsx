@@ -1,4 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
+
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 

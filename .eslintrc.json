@@ -173,7 +173,7 @@
 			}
 		],
         //https://chat.openai.com/c/42c69b4f-5494-41b5-a73d-00c8598e80d8
-        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+        "import/no-extraneous-dependencies": "off",
 		// https://eslint.org/docs/latest/rules/object-curly-newline
 		"object-curly-newline": [
 			1,

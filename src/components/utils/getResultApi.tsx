@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { toast } from 'react-toastify';
 import axios from 'axios';
 
@@ -42,7 +41,8 @@ export const getResult = async ({
       toast.error('Вы не выбрали все необходимые номера', {
         style: {
           background: '#F19C9C'
-        } });
+        }
+      });
     }
   } catch (error) {
     console.error(error);
@@ -52,7 +52,8 @@ export const getResult = async ({
       toast.error('Произошла ошибка при отправке данных на сервер', {
         style: {
           background: '#F19C9C'
-        } });
+        }
+      });
       setRetryCount(0);
     }
   }
