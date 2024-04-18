@@ -139,12 +139,7 @@
 			}
 		],
 		// https://eslint.org/docs/latest/rules/consistent-return
-		"consistent-return": [
-			1,
-			{
-				"treatUndefinedAsUnspecified": true
-			}
-		],
+		"consistent-return": "off",
 		// https://eslint.org/docs/latest/rules/no-multiple-empty-lines
 		"no-multiple-empty-lines": [
 			1,
